@@ -1,6 +1,6 @@
 - type: entity
   id: CP14ActionSpellHealBallade
-  name: Healing ballade
+  name: Lesser Prayer
   description: You incant a prayer in absolute focus, slowly healing yourself and up to 3 other person near you.
   components:
   - type: Sprite
