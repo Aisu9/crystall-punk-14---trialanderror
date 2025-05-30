@@ -1,15 +1,15 @@
 - type: entity
-  id: CP14ActionSpellMiracle
-  name: Miracle
-  description: Chant a soothing prayer, tending wounds over a long duration.
+  id: CP14ActionSpellFlashHeal
+  name: Flash heal
+  description: You hastly incant an healing prayer
   components:
   - type: Sprite
     sprite: _CP14/Actions/Spells/healing.rsi
-    state: miracle
+    state: cure_wounds
   - type: CP14MagicEffectCastSlowdown
     speedMultiplier: 0.5
   - type: CP14MagicEffectManaCost
-    manaCost: 0
+    manaCost: 70
   - type: CP14MagicEffect
     magicType: Life
     telegraphyEffects:
@@ -25,20 +25,19 @@
       - !type:HealthChange
         damage:
           types:
-            Slash: -1
-            Blunt: -1
-            Piercing: -1
-            Cold: -1
-            Heat: -1
-            Shock: -1
-            Poison: -1
-            Bloodloss: -1
-            Caustic: -1
+            Slash: -30
+            Blunt: -30
+            Piercing: -30
+            Cold: -30
+            Heat: -30
+            Shock: -30
+            poison: -30
+            Bloodloss: -30
+            Caustic: -30
+            
       - !type:Jitter
-      - !type:ModifyBloodLevel
-        amount: 2
       - !type:ModifyBleedAmount
-        amount: -1
+        amount: -5
   - type: CP14MagicEffectVerbalAspect
     startSpeech: "Et curabuntur..."
     endSpeech: "vulnera tua"
@@ -48,7 +47,7 @@
     whitelist:
       components:
       - MobState
-    range: 3
+    range: 12
     itemIconStyle: BigAction
     interactOnMiss: false
     sound: !type:SoundPathSpecifier
@@ -58,10 +57,9 @@
       state: cure_wounds
     event: !type:CP14DelayedEntityTargetActionEvent
       effectFrequency: 1
-      cooldown: 60
-      castDelay: 3
-      castTime: 15
-      breakOnMove: true
+      cooldown: 30
+      castDelay: 0.2
+      breakOnMove: false
  
 - type: entity
   id: CP14RuneCureWounds
@@ -91,9 +89,9 @@
 
 - type: entity
   parent: CP14BaseSpellScrollHealing
-  id: CP14SpellScrollMiracle
-  name: miracle spell scroll
+  id: CP14SpellScrollFlashHeal
+  name: flash heal spell scroll
   components:
   - type: CP14SpellStorage
     spells:
-    - CP14ActionSpellMiracle
+    - CP14ActionSpellFlashHeal

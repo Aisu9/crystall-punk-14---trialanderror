@@ -1,60 +1,69 @@
 - type: entity
-  id: CP14ActionSpellBloodPurification
-  name: Blood purification
-  description: You cleanse the target's blood of poisons and acids, and restore its volume slightly
+  id: CP14ActionSpellMiracle
+  name: Miracle
+  description: Chant a soothing prayer, tending wounds over a long duration.
   components:
   - type: Sprite
     sprite: _CP14/Actions/Spells/healing.rsi
-    state: cure_poison
+    state: miracle
   - type: CP14MagicEffectCastSlowdown
     speedMultiplier: 0.5
   - type: CP14MagicEffectManaCost
-    manaCost: 12
+    manaCost: 0
   - type: CP14MagicEffect
     magicType: Life
     telegraphyEffects:
     - !type:CP14SpellSpawnEntityOnTarget
       spawns:
-      - CP14ImpactEffectBloodPurification
+      - CP14ImpactEffectCureWounds
     effects:
     - !type:CP14SpellSpawnEntityOnTarget
       spawns:
-      - CP14ImpactEffectBloodPurification
+      - CP14ImpactEffectCureWounds
     - !type:CP14SpellApplyEntityEffect
       effects:
       - !type:HealthChange
         damage:
           types:
-            Poison: -10
-            Bloodloss: -10
-            Caustic: -10
+            Slash: -1
+            Blunt: -1
+            Piercing: -1
+            Cold: -1
+            Heat: -1
+            Shock: -1
+            Poison: -1
+            Bloodloss: -1
+            Caustic: -1
       - !type:Jitter
       - !type:ModifyBloodLevel
-        amount: 25
+        amount: 2
+      - !type:ModifyBleedAmount
+        amount: -1
   - type: CP14MagicEffectVerbalAspect
-    startSpeech: "Nella coda..."
-    endSpeech: "sta il veleno"
+    startSpeech: "Et curabuntur..."
+    endSpeech: "vulnera tua"
   - type: CP14MagicEffectCastingVisual
-    proto: CP14RuneBloodPurification
+    proto: CP14RuneCureWounds
   - type: EntityTargetAction
     whitelist:
       components:
       - MobState
-    range: 7
+    range: 3
     itemIconStyle: BigAction
     interactOnMiss: false
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
     icon:
       sprite: _CP14/Actions/Spells/healing.rsi
-      state: cure_poison
-    event: !type:CP14DelayedEntityTargetActionEvent
-      cooldown: 5
-      castDelay: 1.5
-      breakOnMove: false
-
+      state: cure_wounds
+    event: !type:CP14ToggleableEntityTargetActionEvent
+      effectFrequency: 0.5
+      cooldown: 60
+      castTime: 10
+      breakOnMove: true
+ 
 - type: entity
-  id: CP14RuneBloodPurification
+  id: CP14RuneCureWounds
   parent: CP14BaseMagicRune
   categories: [ HideSpawnMenu ]
   save: false
@@ -66,12 +75,9 @@
     - state: sun
       color: "#79b330"
       shader: unshaded
-    - state: double_outer
-      color: "#a1252f"
-      shader: unshaded
 
 - type: entity
-  id: CP14ImpactEffectBloodPurification
+  id: CP14ImpactEffectCureWounds
   parent: CP14BaseMagicImpact
   categories: [ HideSpawnMenu ]
   save: false
@@ -84,9 +90,9 @@
 
 - type: entity
   parent: CP14BaseSpellScrollHealing
-  id: CP14SpellScrollBloodPurification
-  name: blood purification spell scroll
+  id: CP14SpellScrollMiracle
+  name: miracle spell scroll
   components:
   - type: CP14SpellStorage
     spells:
-    - CP14ActionSpellBloodPurification
+    - CP14ActionSpellMiracle
