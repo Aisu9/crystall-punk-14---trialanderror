@@ -33,7 +33,5 @@
     oldAction: CP14ActionSpellSprint
     newAction: CP14ActionSpellSprintGoblin
   restrictions:
-  - !type:NeedPrerequisite
-    prerequisite: CP14ActionSpellSprint
   - !type:SpeciesWhitelist
     species: CP14Goblin
