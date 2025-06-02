@@ -112,6 +112,23 @@
   - !type:NeedPrerequisite
     prerequisite: HealingT2
 
+- type: cp14Skill
+  id: CP14ActionSpellPlantGrowthSilva
+  skillUiPosition: 8, 4
+  tree: Healing
+  learncost: 0
+  icon:
+    sprite: _CP14/Actions/Spells/healing.rsi
+    state: plant_growth
+  effects: 
+  - !type:AddAction
+    action: CP14ActionPlantGrowthSilva
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT2
+  !type:SpeciesWhitelist
+    species: CP14Silva
+
 # T3
 
 - type: cp14Skill
