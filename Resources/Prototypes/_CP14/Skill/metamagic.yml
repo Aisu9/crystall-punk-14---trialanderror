@@ -37,12 +37,9 @@
     sprite: _CP14/Actions/Spells/meta.rsi
     state: mana_gift
   effects: 
-  - !type:ReplaceAction
-    oldAction: CP14ActionSpellManaGift
-    newAction: CP14ActionSpellManaGiftElf
+  - !type:AddAction
+    Action: CP14ActionSpellManaGiftElf
   restrictions:
-  - !type:NeedPrerequisite
-    prerequisite: CP14ActionSpellManaGift
   - !type:SpeciesWhitelist
     species: CP14Elf
     
@@ -70,12 +67,9 @@
     sprite: _CP14/Actions/Spells/meta.rsi
     state: mana_consume
   effects: 
-  - !type:ReplaceAction
-    oldAction: CP14ActionSpellManaConsume
-    newAction: CP14ActionSpellManaConsumeElf
+  - !type:AddAction
+    Action: CP14ActionSpellManaConsumeElf
   restrictions:
-  - !type:NeedPrerequisite
-    prerequisite: CP14ActionSpellManaConsume
   - !type:SpeciesWhitelist
     species: CP14Elf
     
