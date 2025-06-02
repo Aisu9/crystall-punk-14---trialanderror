@@ -124,8 +124,6 @@
   - !type:AddAction
     action: CP14ActionPlantGrowthSilva
   restrictions:
-  - !type:NeedPrerequisite
-    prerequisite: HealingT2
   !type:SpeciesWhitelist
     species: CP14Silva
 
