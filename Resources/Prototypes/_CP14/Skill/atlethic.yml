@@ -29,9 +29,8 @@
     sprite: _CP14/Actions/Spells/physical.rsi
     state: sprint
   effects: 
-  - !type:ReplaceAction
-    oldAction: CP14ActionSpellSprint
-    newAction: CP14ActionSpellSprintGoblin
+  - !type:AddAction
+    Action: CP14ActionSpellSprintGoblin
   restrictions:
   - !type:SpeciesWhitelist
     species: CP14Goblin
